@@ -1,9 +1,11 @@
-[gd_scene load_steps=31 format=3 uid="uid://bti8vlanloo2p"]
+[gd_scene load_steps=33 format=3 uid="uid://bti8vlanloo2p"]
 
-[ext_resource type="Script" uid="uid://h2dkd5fjxsfu" path="res://character_body_2d.gd" id="1_a0fe6"]
+[ext_resource type="Script" uid="uid://h2dkd5fjxsfu" path="res://Player/labaw_donggon.gd" id="1_a0fe6"]
 [ext_resource type="Texture2D" uid="uid://bk10wmkohqmyi" path="res://Assets/Placeholder/idle outline.png" id="2_d5mpf"]
 [ext_resource type="Texture2D" uid="uid://iqtiu4y6hidf" path="res://Assets/Placeholder/full jump animation outline.png" id="3_36qvg"]
+[ext_resource type="Resource" uid="uid://clxprto1xvdt5" path="res://Player/labaw_donggon_movement_values.tres" id="3_v8w7h"]
 [ext_resource type="Texture2D" uid="uid://cdc8a5a5m27xa" path="res://Assets/Placeholder/run outline.png" id="4_6bf2n"]
+[ext_resource type="Script" uid="uid://cus65uv030qs7" path="res://movement.gd" id="5_5rj3w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d5mpf"]
 atlas = ExtResource("3_36qvg")
@@ -199,8 +201,14 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_50to8"]
 size = Vector2(42, 67)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("1_a0fe6")
+animated_sprite = NodePath("Sprite2D")
+
+[node name="MovementComponent" type="Node" parent="." node_paths=PackedStringArray("current_character")]
+script = ExtResource("5_5rj3w")
+movement_values = ExtResource("3_v8w7h")
+current_character = NodePath("..")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -1.52588e-05)
