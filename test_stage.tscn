@@ -28,7 +28,7 @@ scale = Vector2(1.09636, 1)
 polygon = PackedVector2Array(-582.5, -14, 584.5, -14, 584.5, 15, -583, 15)
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Static Body List"]
-position = Vector2(12, -26)
+position = Vector2(11, -24)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Static Body List/StaticBody2D2"]
 position = Vector2(629, 9.5)
@@ -40,7 +40,7 @@ scale = Vector2(1.09052, 1)
 polygon = PackedVector2Array(-586, -15.5, 585, -16.5, 585, 15.5, 144.047, 15.8766, -586, 16.5)
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Static Body List"]
-position = Vector2(-22, 67)
+position = Vector2(-21, 67)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Static Body List/StaticBody2D3"]
 position = Vector2(5.42274, 291.277)
@@ -65,5 +65,29 @@ position = Vector2(-0.0642834, 0)
 scale = Vector2(1.14183, 1)
 polygon = PackedVector2Array(-326.971, -16.1425, 329.029, -15.8781, 328.97, 15.1218, -328.031, 14.8555)
 
+[node name="StaticBody2D5" type="StaticBody2D" parent="Static Body List"]
+position = Vector2(440, 557)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Static Body List/StaticBody2D5"]
+position = Vector2(629, 9.5)
+shape = SubResource("RectangleShape2D_uww70")
+
+[node name="Polygon2D" type="Polygon2D" parent="Static Body List/StaticBody2D5/CollisionShape2D"]
+position = Vector2(0.0452976, 0)
+scale = Vector2(1.09052, 1)
+polygon = PackedVector2Array(-586, -15.5, 585, -16.5, 585, 15.5, 144.047, 15.8766, -586, 16.5)
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="Static Body List"]
+position = Vector2(-190, 391)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Static Body List/StaticBody2D6"]
+position = Vector2(629, 9.5)
+shape = SubResource("RectangleShape2D_uww70")
+
+[node name="Polygon2D" type="Polygon2D" parent="Static Body List/StaticBody2D6/CollisionShape2D"]
+position = Vector2(0.0452976, 0)
+scale = Vector2(1.09052, 1)
+polygon = PackedVector2Array(-586, -15.5, 585, -16.5, 585, 15.5, 144.047, 15.8766, -586, 16.5)
+
 [node name="PLayer" parent="." instance=ExtResource("1_w0uf1")]
-position = Vector2(576, 537)
+position = Vector2(133, 620)
