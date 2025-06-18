@@ -1,0 +1,127 @@
+[gd_scene load_steps=19 format=3 uid="uid://c3f1nyoaoq8ea"]
+
+[ext_resource type="Script" uid="uid://bm6ajbjhm7rms" path="res://Test Enemy/test_enemy.gd" id="1_j1l7f"]
+[ext_resource type="Texture2D" uid="uid://b0yhu6w5arjih" path="res://Assets/Placeholder/Skeleton Idle.png" id="2_1f57n"]
+[ext_resource type="Script" uid="uid://du7x1t6poljq3" path="res://enemy_movement.gd" id="2_6mx17"]
+[ext_resource type="Resource" uid="uid://dtwgl5meprrel" path="res://Test Enemy/test_enemy_movement_values.tres" id="4_6mx17"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6mx17"]
+size = Vector2(18.4144, 24.4032)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4eh8"]
+atlas = ExtResource("2_1f57n")
+region = Rect2(0, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iajr3"]
+atlas = ExtResource("2_1f57n")
+region = Rect2(24, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jg7vu"]
+atlas = ExtResource("2_1f57n")
+region = Rect2(48, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4humj"]
+atlas = ExtResource("2_1f57n")
+region = Rect2(72, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpsq7"]
+atlas = ExtResource("2_1f57n")
+region = Rect2(96, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m853d"]
+atlas = ExtResource("2_1f57n")
+region = Rect2(120, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ik78p"]
+atlas = ExtResource("2_1f57n")
+region = Rect2(144, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3aya"]
+atlas = ExtResource("2_1f57n")
+region = Rect2(168, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qaiqw"]
+atlas = ExtResource("2_1f57n")
+region = Rect2(192, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkbds"]
+atlas = ExtResource("2_1f57n")
+region = Rect2(216, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndh5x"]
+atlas = ExtResource("2_1f57n")
+region = Rect2(240, 0, 24, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0xyfd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x4eh8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iajr3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jg7vu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4humj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vpsq7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m853d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ik78p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3aya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qaiqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkbds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndh5x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_amipo"]
+size = Vector2(500, 500)
+
+[node name="Test Enemy" type="CharacterBody2D"]
+script = ExtResource("1_j1l7f")
+
+[node name="EnemyMovementComponent" type="Node" parent="." node_paths=PackedStringArray("current_character", "nav_agent")]
+script = ExtResource("2_6mx17")
+movement_values = ExtResource("4_6mx17")
+current_character = NodePath("..")
+nav_agent = NodePath("../NavigationAgent2D")
+metadata/_custom_type_script = "uid://du7x1t6poljq3"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.96355, -5)
+scale = Vector2(1.30729, 1.39326)
+shape = SubResource("RectangleShape2D_6mx17")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(4, -5)
+sprite_frames = SubResource("SpriteFrames_0xyfd")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="DetectionBox" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionBox"]
+shape = SubResource("RectangleShape2D_amipo")
+
+[connection signal="body_shape_entered" from="DetectionBox" to="." method="_on_detection_box_body_shape_entered"]
+[connection signal="body_shape_exited" from="DetectionBox" to="." method="_on_detection_box_body_shape_exited"]

@@ -1,69 +1,55 @@
 [gd_scene load_steps=5 format=3 uid="uid://bh2pnpdpj4uff"]
 
-[ext_resource type="PackedScene" uid="uid://bti8vlanloo2p" path="res://Player/labaw_donggon.tscn" id="1_w0uf1"]
+[ext_resource type="PackedScene" uid="uid://bpkjj56b0cekt" path="res://Test Enemy/test_block.tscn" id="1_vwyws"]
+[ext_resource type="PackedScene" uid="uid://bti8vlanloo2p" path="res://Player/labaw_donggon.tscn" id="2_uww70"]
+[ext_resource type="PackedScene" uid="uid://c3f1nyoaoq8ea" path="res://Test Enemy/test_enemy.tscn" id="3_qbgws"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vwyws"]
-size = Vector2(1278, 28)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uww70"]
-size = Vector2(1278, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w0uf1"]
-size = Vector2(749.231, 31)
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_w0uf1"]
+vertices = PackedVector2Array(1270, 9.97656, 1270, 710, 2.07813, 710, 7.90625, 8.00781)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, 720, 1280, 720, 1280, 0, -2, -2)])
 
 [node name="Test Stage" type="Node2D"]
 
-[node name="Static Body List" type="Node" parent="."]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_w0uf1")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Static Body List"]
-position = Vector2(11, 82)
+[node name="StaticBody2D" parent="." instance=ExtResource("1_vwyws")]
+position = Vector2(250, 716)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Static Body List/StaticBody2D"]
-position = Vector2(630, 653)
-shape = SubResource("RectangleShape2D_vwyws")
+[node name="StaticBody2D2" parent="." instance=ExtResource("1_vwyws")]
+position = Vector2(748, 716)
 
-[node name="Polygon2D" type="Polygon2D" parent="Static Body List/StaticBody2D/CollisionShape2D"]
-position = Vector2(-1.82226, 0)
-scale = Vector2(1.09636, 1)
-polygon = PackedVector2Array(-582.5, -14, 584.5, -14, 584.5, 15, -583, 15)
+[node name="StaticBody2D3" parent="." instance=ExtResource("1_vwyws")]
+position = Vector2(1248, 716)
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="Static Body List"]
-position = Vector2(12, -26)
+[node name="Player" parent="." instance=ExtResource("2_uww70")]
+position = Vector2(173, 638)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Static Body List/StaticBody2D2"]
-position = Vector2(629, 9.5)
-shape = SubResource("RectangleShape2D_uww70")
+[node name="Test Enemy" parent="." instance=ExtResource("3_qbgws")]
+position = Vector2(1050, 641)
 
-[node name="Polygon2D" type="Polygon2D" parent="Static Body List/StaticBody2D2/CollisionShape2D"]
-position = Vector2(0.0452976, 0)
-scale = Vector2(1.09052, 1)
-polygon = PackedVector2Array(-586, -15.5, 585, -16.5, 585, 15.5, 144.047, 15.8766, -586, 16.5)
+[node name="StaticBody2D4" parent="." instance=ExtResource("1_vwyws")]
+position = Vector2(250, 5)
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="Static Body List"]
-position = Vector2(-22, 67)
+[node name="StaticBody2D5" parent="." instance=ExtResource("1_vwyws")]
+position = Vector2(748, 5)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Static Body List/StaticBody2D3"]
-position = Vector2(5.42274, 291.277)
-rotation = 1.56887
-shape = SubResource("RectangleShape2D_w0uf1")
+[node name="StaticBody2D6" parent="." instance=ExtResource("1_vwyws")]
+position = Vector2(1248, 5)
 
-[node name="Polygon2D" type="Polygon2D" parent="Static Body List/StaticBody2D3/CollisionShape2D"]
-position = Vector2(-0.157845, 0)
-scale = Vector2(1.13648, 1)
-polygon = PackedVector2Array(-326.971, -16.1425, 329.029, -15.8781, 328.998, 0.376831, 328.97, 15.1218, -328.031, 14.8555)
+[node name="StaticBody2D7" parent="." instance=ExtResource("1_vwyws")]
+position = Vector2(1, 460)
+rotation = -1.57079
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="Static Body List"]
-position = Vector2(151, 67)
+[node name="StaticBody2D8" parent="." instance=ExtResource("1_vwyws")]
+position = Vector2(1, -40)
+rotation = -1.57079
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Static Body List/StaticBody2D4"]
-position = Vector2(1144.46, 308.615)
-rotation = 1.56887
-shape = SubResource("RectangleShape2D_w0uf1")
+[node name="StaticBody2D9" parent="." instance=ExtResource("1_vwyws")]
+position = Vector2(1274, 462)
+rotation = -1.57079
 
-[node name="Polygon2D" type="Polygon2D" parent="Static Body List/StaticBody2D4/CollisionShape2D"]
-position = Vector2(-0.0642834, 0)
-scale = Vector2(1.14183, 1)
-polygon = PackedVector2Array(-326.971, -16.1425, 329.029, -15.8781, 328.97, 15.1218, -328.031, 14.8555)
-
-[node name="PLayer" parent="." instance=ExtResource("1_w0uf1")]
-position = Vector2(576, 537)
+[node name="StaticBody2D10" parent="." instance=ExtResource("1_vwyws")]
+position = Vector2(1275, -33)
+rotation = -1.57079

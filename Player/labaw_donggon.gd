@@ -3,12 +3,12 @@ extends CharacterBody2D
 
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_axis("ui_left", "ui_right")
-	$MovementComponent.Apply_Gravity(delta)
-	$MovementComponent.Handle_Jump()
-	$MovementComponent.Handle_Acceleration(direction, delta)
-	$MovementComponent.Handle_Air_Acceleration(direction, delta)
-	$MovementComponent.Apply_Friction(direction, delta)
-	$MovementComponent.Apply_Air_Resistance(delta)
+	$PlayerMovementComponent.Apply_Gravity(delta)
+	$PlayerMovementComponent.Handle_Jump()
+	$PlayerMovementComponent.Handle_Acceleration(direction, delta)
+	$PlayerMovementComponent.Handle_Air_Acceleration(direction, delta)
+	$PlayerMovementComponent.Apply_Friction(direction, delta)
+	$PlayerMovementComponent.Apply_Air_Resistance(delta)
 	move_and_slide()
 	Handle_Animation()
 	
