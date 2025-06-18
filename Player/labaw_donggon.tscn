@@ -202,13 +202,15 @@ animations = [{
 size = Vector2(42, 67)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite")]
+collision_layer = 3
 script = ExtResource("1_a0fe6")
 animated_sprite = NodePath("Sprite2D")
 
-[node name="MovementComponent" type="Node" parent="." node_paths=PackedStringArray("current_character")]
+[node name="PlayerMovementComponent" type="Node" parent="." node_paths=PackedStringArray("current_character")]
 script = ExtResource("5_5rj3w")
 movement_values = ExtResource("3_v8w7h")
 current_character = NodePath("..")
+metadata/_custom_type_script = "uid://cus65uv030qs7"
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -1.52588e-05)
