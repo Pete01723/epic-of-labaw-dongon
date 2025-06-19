@@ -11,7 +11,6 @@ func _physics_process(delta: float) -> void:
 	$EnemyMovementComponent.Apply_Gravity(delta)
 	$EnemyMovementComponent.Handle_Acceleration(direction.x, delta)
 	$EnemyMovementComponent.Apply_Friction(direction.x, delta)
-	print(direction)
 	move_and_slide()
 
 func _on_detection_box_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
