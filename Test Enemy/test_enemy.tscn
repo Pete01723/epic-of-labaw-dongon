@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://dtwgl5meprrel" path="res://Test Enemy/test_enemy_movement_values.tres" id="4_6mx17"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6mx17"]
-size = Vector2(18.4144, 24.4032)
+size = Vector2(30.5976, 47.3709)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x4eh8"]
 atlas = ExtResource("2_1f57n")
@@ -107,12 +107,13 @@ nav_agent = NodePath("../NavigationAgent2D")
 metadata/_custom_type_script = "uid://du7x1t6poljq3"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2.96355, -5)
+position = Vector2(-2, -4)
 scale = Vector2(1.30729, 1.39326)
 shape = SubResource("RectangleShape2D_6mx17")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(4, -5)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_0xyfd")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

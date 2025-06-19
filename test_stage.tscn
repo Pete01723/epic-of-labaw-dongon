@@ -23,12 +23,6 @@ position = Vector2(748, 716)
 [node name="StaticBody2D3" parent="." instance=ExtResource("1_vwyws")]
 position = Vector2(1248, 716)
 
-[node name="Player" parent="." instance=ExtResource("2_uww70")]
-position = Vector2(173, 638)
-
-[node name="Test Enemy" parent="." instance=ExtResource("3_qbgws")]
-position = Vector2(1050, 641)
-
 [node name="StaticBody2D4" parent="." instance=ExtResource("1_vwyws")]
 position = Vector2(250, 5)
 
@@ -53,3 +47,18 @@ rotation = -1.57079
 [node name="StaticBody2D10" parent="." instance=ExtResource("1_vwyws")]
 position = Vector2(1275, -33)
 rotation = -1.57079
+
+[node name="StaticBody2D11" parent="." instance=ExtResource("1_vwyws")]
+position = Vector2(648, 637)
+
+[node name="StaticBody2D12" parent="." instance=ExtResource("1_vwyws")]
+position = Vector2(872, 552)
+
+[node name="StaticBody2D13" parent="." instance=ExtResource("1_vwyws")]
+position = Vector2(392, 472)
+
+[node name="Player" parent="." instance=ExtResource("2_uww70")]
+position = Vector2(173, 638)
+
+[node name="Test Enemy" parent="." instance=ExtResource("3_qbgws")]
+position = Vector2(1050, 641)
