@@ -96,8 +96,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_amipo"]
 size = Vector2(500, 500)
 
-[node name="Test Enemy" type="CharacterBody2D"]
+[node name="Test Enemy" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("1_j1l7f")
+animated_sprite = NodePath("AnimatedSprite2D")
 
 [node name="EnemyMovementComponent" type="Node" parent="." node_paths=PackedStringArray("current_character", "nav_agent")]
 script = ExtResource("2_6mx17")
