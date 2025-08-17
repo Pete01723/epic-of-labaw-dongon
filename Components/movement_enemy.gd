@@ -1,5 +1,5 @@
 extends Node
-class_name EnemyMovementComponent
+class_name MovementEnemyComponent
 
 @export var movement_values: MovementValuesComponent
 @export var current_character: CharacterBody2D

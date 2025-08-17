@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bm6ajbjhm7rms" path="res://Test Enemy/test_enemy.gd" id="1_j1l7f"]
 [ext_resource type="Texture2D" uid="uid://b0yhu6w5arjih" path="res://Assets/Placeholder/Skeleton Idle.png" id="2_1f57n"]
-[ext_resource type="Script" uid="uid://du7x1t6poljq3" path="res://enemy_movement.gd" id="2_6mx17"]
+[ext_resource type="Script" uid="uid://du7x1t6poljq3" path="res://Components/movement_enemy.gd" id="2_6mx17"]
 [ext_resource type="Resource" uid="uid://dtwgl5meprrel" path="res://Test Enemy/test_enemy_movement_values.tres" id="4_6mx17"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6mx17"]
