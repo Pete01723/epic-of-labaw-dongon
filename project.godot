@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Epic of Labaw Doggon"
-run/main_scene="uid://bh2pnpdpj4uff"
+run/main_scene="uid://b3mjftvlf4np"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Main="*res://main.gd"
 
 [display]
 

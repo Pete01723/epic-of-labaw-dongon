@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="MovementValuesComponent" load_steps=2 format=3 uid="uid://dtwgl5meprrel"]
 
-[ext_resource type="Script" uid="uid://b3kfx728uftsc" path="res://movement_values_component.gd" id="1_udlbs"]
+[ext_resource type="Script" uid="uid://b3kfx728uftsc" path="res://Components/movement_values_component.gd" id="1_udlbs"]
 
 [resource]
 script = ExtResource("1_udlbs")
-SPEED = 300.0
+SPEED = 150.0
 JUMP_VELOCITY = -400.0
 ACCELERATION = 800.0
-FRICTION = 2400.0
+FRICTION = 150.0
 AIR_RESISTANCE = 200.0
 AIR_ACCELERATION = 400.0
 metadata/_custom_type_script = "uid://b3kfx728uftsc"

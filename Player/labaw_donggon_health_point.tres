@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="HealthPointComponent" load_steps=2 format=3 uid="uid://ps67iwlo8tnb"]
 
-[ext_resource type="Script" uid="uid://n0aabivik6vo" path="res://health_point_component.gd" id="1_2sbsu"]
+[ext_resource type="Script" uid="uid://n0aabivik6vo" path="res://Components/health_point_component.gd" id="1_2sbsu"]
 
 [resource]
 script = ExtResource("1_2sbsu")
