@@ -1,7 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://didlo5t01q6q8"]
+[gd_scene load_steps=3 format=3 uid="uid://didlo5t01q6q8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dcikv"]
 size = Vector2(16, 16)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_dcikv"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [node name="Node2D" type="Node2D"]
 
@@ -12,3 +15,6 @@ shape = SubResource("RectangleShape2D_dcikv")
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="StaticBody2D"]
+occluder = SubResource("OccluderPolygon2D_dcikv")

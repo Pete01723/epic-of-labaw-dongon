@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bti8vlanloo2p"]
+[gd_scene load_steps=34 format=3 uid="uid://bti8vlanloo2p"]
 
 [ext_resource type="Script" uid="uid://h2dkd5fjxsfu" path="res://Player/labaw_donggon.gd" id="1_a0fe6"]
 [ext_resource type="Texture2D" uid="uid://bk10wmkohqmyi" path="res://Assets/Placeholder/idle outline.png" id="2_d5mpf"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://clxprto1xvdt5" path="res://Player/labaw_donggon_movement_values.tres" id="3_v8w7h"]
 [ext_resource type="Texture2D" uid="uid://cdc8a5a5m27xa" path="res://Assets/Placeholder/run outline.png" id="4_6bf2n"]
 [ext_resource type="Script" uid="uid://cus65uv030qs7" path="res://Components/movement.gd" id="5_5rj3w"]
+[ext_resource type="Texture2D" uid="uid://rq6cmvblhxvg" path="res://Assets/Textures/2d_radial_point_light.webp" id="7_h5vyo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d5mpf"]
 atlas = ExtResource("3_36qvg")
@@ -202,6 +203,7 @@ animations = [{
 size = Vector2(42, 67)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite")]
+z_index = 1
 collision_layer = 3
 script = ExtResource("1_a0fe6")
 animated_sprite = NodePath("Sprite2D")
@@ -212,6 +214,20 @@ movement_values = ExtResource("3_v8w7h")
 current_character = NodePath("..")
 metadata/_custom_type_script = "uid://cus65uv030qs7"
 
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
+limit_left = 0
+limit_top = 0
+limit_right = 1280
+limit_bottom = 720
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_top_margin = 0.1
+drag_bottom_margin = 0.1
+editor_draw_drag_margin = true
+
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -1.52588e-05)
 scale = Vector2(1.99235, 2.0437)
@@ -221,3 +237,8 @@ animation = &"idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_50to8")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.2
+texture = ExtResource("7_h5vyo")
+texture_scale = 0.6
