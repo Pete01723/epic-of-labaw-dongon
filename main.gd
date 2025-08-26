@@ -4,6 +4,8 @@ var current_scene = null
 var player: CharacterBody2D = null
 var spawn_player = null
 var door_target = null
+var collectables: Dictionary
+
 
 func _ready() -> void:
 	var root = get_tree().root
@@ -36,6 +38,7 @@ func _deferred_goto_scene(path):
 	# Optionally, to make it compatible with the SceneTree.change_scene_to_file() API.
 	get_tree().current_scene = current_scene
 	
+	# Instantiates the player if the player does not exist yet. Otherwise, it moves the player's position to the destination of the stage's door.
 	if (get_tree().current_scene.name.begins_with("Stage")):
 		if (!player):
 			s = ResourceLoader.load("res://Player/labaw_donggon.tscn")
