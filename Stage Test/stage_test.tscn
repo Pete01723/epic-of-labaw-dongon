@@ -1,7 +1,12 @@
-[gd_scene load_steps=6 format=4 uid="uid://202ku7ke3chr"]
+
+[gd_scene load_steps=7 format=4 uid="uid://202ku7ke3chr"]
 
 [ext_resource type="PackedScene" uid="uid://didlo5t01q6q8" path="res://Stage Test/block_test.tscn" id="1_hlaag"]
+[ext_resource type="Script" uid="uid://bicaky3cwhhj4" path="res://Stage Test/stage_test.gd" id="1_pa6e5"]
 [ext_resource type="PackedScene" uid="uid://cpe8kxkf0uor7" path="res://Components/Door/door.tscn" id="3_1mclw"]
+
+[ext_resource type="AudioStream" uid="uid://k48okh4vlrxd" path="res://Assets/Music/Forest Theme.mp3" id="4_hkhd7"]
+
 [ext_resource type="Texture2D" uid="uid://2x5y847k1gud" path="res://Assets/Textures/2d_radial_point_light.webp" id="4_hkhd7"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_pa6e5"]
@@ -11,6 +16,7 @@ scenes/1/scene = ExtResource("1_hlaag")
 sources/2 = SubResource("TileSetScenesCollectionSource_pa6e5")
 
 [node name="Stage Test" type="Node2D"]
+script = ExtResource("1_pa6e5")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1280.0
@@ -35,6 +41,10 @@ target_scene = "res://Stage Test/stage_test2.tscn"
 position = Vector2(1272, 312)
 target_scene = "res://Stage Test/stage_test2.tscn"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_hkhd7")
+autoplay = true
+parameters/looping = true
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(192, 576)
 texture = ExtResource("4_hkhd7")
