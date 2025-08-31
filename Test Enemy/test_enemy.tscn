@@ -1,8 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://c3f1nyoaoq8ea"]
+[gd_scene load_steps=22 format=3 uid="uid://c3f1nyoaoq8ea"]
 
 [ext_resource type="Script" uid="uid://bm6ajbjhm7rms" path="res://Test Enemy/test_enemy.gd" id="1_j1l7f"]
 [ext_resource type="Texture2D" uid="uid://b0yhu6w5arjih" path="res://Assets/Placeholder/Skeleton Idle.png" id="2_1f57n"]
 [ext_resource type="Script" uid="uid://du7x1t6poljq3" path="res://Components/movement_enemy.gd" id="2_6mx17"]
+[ext_resource type="Script" uid="uid://cinb8h0qqh0ad" path="res://Player/health.gd" id="2_ekhdd"]
+[ext_resource type="Resource" uid="uid://evax0157u3no" path="res://Test Enemy/health.tres" id="3_jqtjx"]
 [ext_resource type="Resource" uid="uid://dtwgl5meprrel" path="res://Test Enemy/test_enemy_movement_values.tres" id="4_6mx17"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6mx17"]
@@ -96,9 +98,16 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_amipo"]
 size = Vector2(500, 500)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ekhdd"]
+size = Vector2(28, 56)
+
 [node name="Test Enemy" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("1_j1l7f")
 animated_sprite = NodePath("AnimatedSprite2D")
+
+[node name="Health" type="Node2D" parent="."]
+script = ExtResource("2_ekhdd")
+health = ExtResource("3_jqtjx")
 
 [node name="EnemyMovementComponent" type="Node" parent="." node_paths=PackedStringArray("current_character", "nav_agent")]
 script = ExtResource("2_6mx17")
@@ -125,5 +134,14 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionBox"]
 shape = SubResource("RectangleShape2D_amipo")
 
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-7, 3)
+shape = SubResource("RectangleShape2D_ekhdd")
+
+[connection signal="tree_entered" from="CollisionShape2D" to="." method="_on_collision_shape_2d_tree_entered"]
 [connection signal="body_shape_entered" from="DetectionBox" to="." method="_on_detection_box_body_shape_entered"]
 [connection signal="body_shape_exited" from="DetectionBox" to="." method="_on_detection_box_body_shape_exited"]

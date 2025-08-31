@@ -19,6 +19,7 @@ func Handle_Animation():
 		
 func _on_detection_box_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	player = body
+	print(player)
 
 func _on_detection_box_body_shape_exited(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	player = null

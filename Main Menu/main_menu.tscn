@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://b3mjftvlf4np"]
+[gd_scene load_steps=16 format=3 uid="uid://b3mjftvlf4np"]
 
 [ext_resource type="Script" uid="uid://cumknpm0ay4s4" path="res://Main Menu/main_menu.gd" id="1_vccqd"]
+[ext_resource type="AudioStream" uid="uid://df50m34ekw67d" path="res://Assets/Music/Labaw Donggon Main Theme.mp3" id="2_nb5b5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vccqd"]
 bg_color = Color(0.619608, 0.6, 0.6, 1)
@@ -189,6 +190,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_pqn6e")
 text = "Quit"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_nb5b5")
 autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/New Game" to="." method="_on_new_game_pressed"]
