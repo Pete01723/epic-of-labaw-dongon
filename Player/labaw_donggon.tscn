@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://clxprto1xvdt5" path="res://Player/labaw_donggon_movement_values.tres" id="3_v8w7h"]
 [ext_resource type="Texture2D" uid="uid://cdc8a5a5m27xa" path="res://Assets/Placeholder/run outline.png" id="4_6bf2n"]
 [ext_resource type="Script" uid="uid://cus65uv030qs7" path="res://Components/movement.gd" id="5_5rj3w"]
-[ext_resource type="Texture2D" uid="uid://rq6cmvblhxvg" path="res://Assets/Textures/2d_radial_point_light.webp" id="7_h5vyo"]
+[ext_resource type="Texture2D" uid="uid://2x5y847k1gud" path="res://Assets/Textures/2d_radial_point_light.webp" id="7_h5vyo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d5mpf"]
 atlas = ExtResource("3_36qvg")
