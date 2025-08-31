@@ -1,6 +1,8 @@
 extends CharacterBody2D
 @export var animated_sprite: AnimatedSprite2D
 
+var reset_position: Vector2
+
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_axis("ui_left", "ui_right")
 	$PlayerMovementComponent.Apply_Gravity(delta)
@@ -25,3 +27,7 @@ func Handle_Animation():
 		animated_sprite.play("jump")
 	elif velocity.y > 0 and not is_on_floor():
 		animated_sprite.play("fall")
+
+func on_enter():
+	# Position for kill system. Assigned when entering new room (see Game.gd).
+	reset_position = position
