@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://iqtiu4y6hidf"
-path="res://.godot/imported/full jump animation outline.png-1f333aebe7f79755dccbc89ba1c1d83e.ctex"
+uid="uid://bbpiyxi5y7ibt"
+path="res://.godot/imported/_Run.png-b42ad8a9499ea967a64ed73113e619cb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Placeholder/full jump animation outline.png"
-dest_files=["res://.godot/imported/full jump animation outline.png-1f333aebe7f79755dccbc89ba1c1d83e.ctex"]
+source_file="res://Assets/Placeholder/Player Character/_Run.png"
+dest_files=["res://.godot/imported/_Run.png-b42ad8a9499ea967a64ed73113e619cb.ctex"]
 
 [params]
 

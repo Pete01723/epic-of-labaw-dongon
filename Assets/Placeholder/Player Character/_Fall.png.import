@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdc8a5a5m27xa"
-path="res://.godot/imported/run outline.png-f394495aaffa9d597bf8f2535ff14f95.ctex"
+uid="uid://dxr7n07d38bua"
+path="res://.godot/imported/_Fall.png-131646fe15a7dbbd67a9d7ac23909e68.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Placeholder/run outline.png"
-dest_files=["res://.godot/imported/run outline.png-f394495aaffa9d597bf8f2535ff14f95.ctex"]
+source_file="res://Assets/Placeholder/Player Character/_Fall.png"
+dest_files=["res://.godot/imported/_Fall.png-131646fe15a7dbbd67a9d7ac23909e68.ctex"]
 
 [params]
 
