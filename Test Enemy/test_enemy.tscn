@@ -226,9 +226,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ddlis"]
-size = Vector2(37, 71)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6mx17"]
 size = Vector2(30.5976, 47.3709)
 
@@ -238,30 +235,23 @@ size = Vector2(500, 500)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekhdd"]
 size = Vector2(46, 56)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ddlis"]
+size = Vector2(37, 71)
+
 [node name="Test Enemy" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("1_j1l7f")
-animated_sprite = NodePath("Health/AnimatedSprite2D")
+animated_sprite = NodePath("AnimatedSprite2D")
 
-[node name="Health" type="Node2D" parent="."]
-script = ExtResource("2_ekhdd")
-health = ExtResource("3_jqtjx")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Health"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(4, -5)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_0xyfd")
 animation = &"attack"
 frame = 7
 
-[node name="AttackComponent" type="Node2D" parent="Health"]
-script = ExtResource("6_mygaq")
-metadata/_custom_type_script = "uid://dj0mo3ywool2i"
-
-[node name="HitBox" type="Area2D" parent="Health/AttackComponent"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Health/AttackComponent/HitBox"]
-position = Vector2(26.5, -2.5)
-shape = SubResource("RectangleShape2D_ddlis")
+[node name="Health" type="Node2D" parent="."]
+script = ExtResource("2_ekhdd")
+health = ExtResource("3_jqtjx")
 
 [node name="EnemyMovementComponent" type="Node" parent="." node_paths=PackedStringArray("current_character", "nav_agent")]
 script = ExtResource("2_6mx17")
@@ -295,6 +285,16 @@ health = NodePath("../Health")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(2, 3)
 shape = SubResource("RectangleShape2D_ekhdd")
+
+[node name="AttackComponent" type="Node2D" parent="."]
+script = ExtResource("6_mygaq")
+metadata/_custom_type_script = "uid://dj0mo3ywool2i"
+
+[node name="HitBox" type="Area2D" parent="AttackComponent"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent/HitBox"]
+position = Vector2(26.5, -2.5)
+shape = SubResource("RectangleShape2D_ddlis")
 
 [connection signal="tree_entered" from="CollisionShape2D" to="." method="_on_collision_shape_2d_tree_entered"]
 [connection signal="body_shape_entered" from="DetectionBox" to="." method="_on_detection_box_body_shape_entered"]
