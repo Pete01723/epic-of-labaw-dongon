@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://didlo5t01q6q8" path="res://Stage Test/block_test.tscn" id="1_jbbiu"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_jbbiu"]
-[ext_resource type="PackedScene" uid="uid://kh11bmn2l1tc" path="res://Test Boss/test_boss.tscn" id="3_4d31v"]
+[ext_resource type="PackedScene" uid="uid://c3f1nyoaoq8ea" path="res://Test Enemy/test_enemy.tscn" id="3_4d31v"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_pa6e5"]
 scenes/1/scene = ExtResource("1_jbbiu")
@@ -26,5 +26,5 @@ tile_set = SubResource("TileSet_vont1")
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_4d31v")
 
-[node name="TestBoss" parent="." instance=ExtResource("3_4d31v")]
-position = Vector2(899, 417)
+[node name="Test Enemy" parent="." instance=ExtResource("3_4d31v")]
+position = Vector2(761, 443)

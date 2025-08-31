@@ -4,7 +4,7 @@ class_name Health
 @export var health: HealthPointComponent
 var taking_damage = false
 
-func damage(attack:Attack):
+func damage(attack:AttackValuesComponent):
 	print(health.current_health_points)
 	health.current_health_points-=attack.attack_damage
 	

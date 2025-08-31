@@ -12,6 +12,7 @@ func _physics_process(delta: float) -> void:
 	$PlayerMovementComponent.Handle_Air_Acceleration(direction, delta)
 	$PlayerMovementComponent.Apply_Friction(direction, delta)
 	$PlayerMovementComponent.Apply_Air_Resistance(delta)
+	$AttackComponent.Handle_Attack()
 	move_and_slide()
 	Handle_Animation()
 	
@@ -39,5 +40,7 @@ func on_enter():
 
 func _on_sprite_2d_animation_finished():
 	if animated_sprite.animation == 'attack':
-		is_attacking = false
-		
+		is_attacking = false		
+
+func _on_hit_box_area_entered(area: Area2D) -> void:
+	$AttackComponent.Hits(area)
