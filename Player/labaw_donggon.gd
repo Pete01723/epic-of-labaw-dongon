@@ -40,3 +40,4 @@ func on_enter():
 func _on_sprite_2d_animation_finished():
 	if animated_sprite.animation == 'attack':
 		is_attacking = false
+		

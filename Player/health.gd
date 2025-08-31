@@ -5,10 +5,11 @@ class_name Health
 var taking_damage = false
 
 func damage(attack:Attack):
+	print(health.current_health_points)
 	health.current_health_points-=attack.attack_damage
 	
 	if health.current_health_points <= 0:
-		queue_free()
+		get_parent().queue_free()
 	
 	taking_damage = true
 	

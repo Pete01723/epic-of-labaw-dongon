@@ -16,3 +16,11 @@ func Handle_Attack():
 	else:
 		$HitBox/CollisionShape2D.disabled = false
 	
+
+func _on_hit_box_area_entered(area):
+	if area.has_method('damage'):
+		var attack = Attack.new()
+		attack.attack_damage = 1
+		attack.knockback = 10
+		
+		area.damage(attack)
