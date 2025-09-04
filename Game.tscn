@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dna18tdxlu2uf"]
+[gd_scene load_steps=6 format=3 uid="uid://dna18tdxlu2uf"]
 
 [ext_resource type="Script" uid="uid://bxqe526l1ebry" path="res://Game.gd" id="1_xkndl"]
 [ext_resource type="PackedScene" uid="uid://bti8vlanloo2p" path="res://Player/labaw_donggon.tscn" id="2_u44n3"]
+[ext_resource type="Texture2D" uid="uid://c2bb3pr6tshfg" path="res://Assets/Textures/healthBase.PNG" id="3_t88pq"]
+[ext_resource type="Script" uid="uid://ci24yxas6stsl" path="res://healthBar.gd" id="3_u44n3"]
+[ext_resource type="Texture2D" uid="uid://62g271nvao6i" path="res://Assets/Textures/healthBar.PNG" id="4_r0x5m"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_xkndl")
@@ -11,3 +14,28 @@ unique_name_in_owner = true
 position = Vector2(680, 677)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" node_paths=PackedStringArray("player")]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -255.0
+offset_top = -360.0
+offset_right = -205.0
+offset_bottom = -341.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(5, 2)
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_over = ExtResource("3_t88pq")
+texture_progress = ExtResource("4_r0x5m")
+script = ExtResource("3_u44n3")
+player = NodePath("../../Player")
