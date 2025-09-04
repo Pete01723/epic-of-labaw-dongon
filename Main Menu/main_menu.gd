@@ -1,7 +1,10 @@
 extends Control
 
+@onready var music = $AudioStreamPlayer
+
 func _on_new_game_pressed():
-	Main.goto_scene("res://Stage Test/stage_test.tscn")
+	music.stop()
+	Main.goto_scene("res://Game.tscn")
 	
 func _on_continue_pressed():
 	pass

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://df50m34ekw67d"
+path="res://.godot/imported/Labaw Donggon Main Theme.mp3-71f5df30a6c0532a2e48039da6681682.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Labaw Donggon Main Theme.mp3"
+dest_files=["res://.godot/imported/Labaw Donggon Main Theme.mp3-71f5df30a6c0532a2e48039da6681682.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

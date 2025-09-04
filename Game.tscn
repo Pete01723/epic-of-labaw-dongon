@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dna18tdxlu2uf"]
+
+[ext_resource type="Script" uid="uid://bxqe526l1ebry" path="res://Game.gd" id="1_xkndl"]
+[ext_resource type="PackedScene" uid="uid://bti8vlanloo2p" path="res://Player/labaw_donggon.tscn" id="2_u44n3"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_xkndl")
+
+[node name="Player" parent="." instance=ExtResource("2_u44n3")]
+unique_name_in_owner = true
+position = Vector2(680, 677)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

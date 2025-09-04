@@ -37,19 +37,3 @@ func _deferred_goto_scene(path):
 
 	# Optionally, to make it compatible with the SceneTree.change_scene_to_file() API.
 	get_tree().current_scene = current_scene
-	
-	# Instantiates the player if the player does not exist yet. Otherwise, it moves the player's position to the destination of the stage's door.
-	if (get_tree().current_scene.name.begins_with("Stage")):
-		if (!player):
-			s = ResourceLoader.load("res://Player/labaw_donggon.tscn")
-			player = s.instantiate()
-			get_tree().root.add_child(player)
-			spawn_player = get_tree().current_scene.get_node("Spawn Player")
-			player.position = spawn_player.position
-		else:
-			spawn_player = get_tree().current_scene.get_node(NodePath(door_target))
-			player.position = spawn_player.position
-			if (!player.animated_sprite.flip_h):
-				player.position.x += 30
-			else:
-				player.position.x -= 30
