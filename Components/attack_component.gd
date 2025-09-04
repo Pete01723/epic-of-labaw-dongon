@@ -1,5 +1,5 @@
 extends Node
-class_name AttackComponent
+
 
 @export var character : CharacterBody2D
 @export var hitbox: CollisionShape2D
