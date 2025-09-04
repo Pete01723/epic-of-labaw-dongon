@@ -4,6 +4,8 @@ extends CharacterBody2D
 var reset_position: Vector2
 var is_attacking: bool
 
+signal healthChanged
+
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_axis("ui_left", "ui_right")
 	$PlayerMovementComponent.Apply_Gravity(delta)
@@ -44,3 +46,7 @@ func _on_sprite_2d_animation_finished():
 
 func _on_hit_box_area_entered(area: Area2D) -> void:
 	$AttackComponent.Hits(area)
+
+
+func _on_health_health_damaged():
+	healthChanged.emit()
