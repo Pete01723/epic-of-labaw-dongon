@@ -7,7 +7,6 @@ var taking_damage = false
 signal healthDamaged
 
 func damage(attack:AttackValuesComponent):
-	print(health.current_health_points)
 	health.current_health_points-=attack.attack_damage
 	
 	if health.current_health_points <= 0:
