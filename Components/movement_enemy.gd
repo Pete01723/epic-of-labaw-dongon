@@ -38,7 +38,6 @@ func Handle_Acceleration(delta):
 	if self.direction.x != 0:
 		self.current_character.velocity.x = move_toward(self.current_character.velocity.x, self.direction.x * self.movement_values.SPEED, self.movement_values.ACCELERATION * delta)		
 		self.nav_agent.velocity.x = self.current_character.velocity.x
-	print(self.direction)
 	
 #func Handle_Air_Acceleration(direction, delta):
 #	if current_character.is_on_floor(): 

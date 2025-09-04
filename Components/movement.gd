@@ -10,7 +10,7 @@ func Apply_Gravity(delta):
 		
 func Handle_Jump():
 	if current_character.is_on_floor():
-		if Input.is_action_just_pressed("ui_accept"):
+		if Input.is_action_just_pressed("ui_up"):
 			current_character.velocity.y = movement_values.JUMP_VELOCITY
 			
 func Apply_Friction(direction, delta):

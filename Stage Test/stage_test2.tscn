@@ -1,13 +1,19 @@
-[gd_scene load_steps=5 format=4 uid="uid://dvdneqxrqepwu"]
+[gd_scene load_steps=7 format=4 uid="uid://dvdneqxrqepwu"]
 
 [ext_resource type="PackedScene" uid="uid://didlo5t01q6q8" path="res://Stage Test/block_test.tscn" id="1_jbbiu"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_jbbiu"]
+[ext_resource type="PackedScene" uid="uid://c3f1nyoaoq8ea" path="res://Test Enemy/test_enemy.tscn" id="3_4d31v"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_pa6e5"]
 scenes/1/scene = ExtResource("1_jbbiu")
 
 [sub_resource type="TileSet" id="TileSet_vont1"]
 sources/2 = SubResource("TileSetScenesCollectionSource_pa6e5")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_4d31v"]
+vertices = PackedVector2Array(1268.88, 702.906, 14, 692.078, 14, 20.9609, 1261.11, 16.0313)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(4, 702, 1279, 713, 1271, 6, 4, 11)])
 
 [node name="Stage Test 2" type="Node2D"]
 
@@ -16,3 +22,9 @@ tile_map_data = PackedByteArray("AAAAACsAAgAAAAAAAQAAACwAAgAAAAAAAQABACsAAgAAAAA
 tile_set = SubResource("TileSet_vont1")
 
 [node name="RoomInstance" parent="." instance=ExtResource("2_jbbiu")]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_4d31v")
+
+[node name="Test Enemy" parent="." instance=ExtResource("3_4d31v")]
+position = Vector2(761, 443)

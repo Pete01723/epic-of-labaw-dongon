@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bk10wmkohqmyi"
-path="res://.godot/imported/idle outline.png-0702d87fe64c64fbda6f3a64a17b7682.ctex"
+uid="uid://dudi1e2bk2to"
+path="res://.godot/imported/Attack.png-7170d75c1864e4830d0ad52d4b34d107.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Placeholder/idle outline.png"
-dest_files=["res://.godot/imported/idle outline.png-0702d87fe64c64fbda6f3a64a17b7682.ctex"]
+source_file="res://Assets/Placeholder/Boss/Attack.png"
+dest_files=["res://.godot/imported/Attack.png-7170d75c1864e4830d0ad52d4b34d107.ctex"]
 
 [params]
 
