@@ -299,8 +299,7 @@ editor_draw_drag_margin = true
 position = Vector2(0, -40)
 scale = Vector2(1.99235, 2.0437)
 sprite_frames = SubResource("SpriteFrames_8llqj")
-animation = &"attack"
-frame = 1
+animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)

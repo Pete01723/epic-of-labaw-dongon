@@ -37,7 +37,7 @@ func _on_detection_box_body_shape_exited(body_rid: RID, body: Node2D, body_shape
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite.animation == 'attack':
 		is_attacking = false
-		$Timer.start()
+		$AttackTimer.start()
 		
 func _on_attack_box_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	if player == body:
@@ -55,3 +55,9 @@ func _on_timer_timeout() -> void:
 	if player_attack:
 		is_attacking = true
 		$HitBox.emit_signal("area_entered")
+
+func _on_enemy_hurtbox_area_entered(area: Area2D) -> void:
+	if $CollisitionTimer.is_stopped():
+		if area.name == "PlayerHurtbox":
+			$AttackComponent.Hits(area)
+			$CollisitionTimer.start()
