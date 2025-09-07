@@ -17,11 +17,9 @@ func Handle_Attack():
 		$HurtBox/CollisionShape2D.disabled = false
 	
 
-
 func _on_hurt_box_area_entered(area):
 	if area.has_method('damage'):
-		var attack = Attack.new()
+		var attack = AttackValuesComponent.new()
 		attack.attack_damage = 1
-		attack.knockback = 10
 		
 		area.damage(attack)
