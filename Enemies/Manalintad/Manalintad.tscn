@@ -1,0 +1,133 @@
+[gd_scene load_steps=17 format=3 uid="uid://cw1s7du2q0s0p"]
+
+[ext_resource type="Script" uid="uid://coa0gv12k8ubi" path="res://Enemies/Manalintad/manalintad.gd" id="1_nq76l"]
+[ext_resource type="Texture2D" uid="uid://blvv0n08c7fe1" path="res://Assets/Placeholder/Boss/Manalintad/Boar - Sprite Sheet.png" id="1_pa6pj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nq76l"]
+atlas = ExtResource("1_pa6pj")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ee83"]
+atlas = ExtResource("1_pa6pj")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42w0t"]
+atlas = ExtResource("1_pa6pj")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ijlau"]
+atlas = ExtResource("1_pa6pj")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqwnb"]
+atlas = ExtResource("1_pa6pj")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vfc7"]
+atlas = ExtResource("1_pa6pj")
+region = Rect2(160, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yylsp"]
+atlas = ExtResource("1_pa6pj")
+region = Rect2(192, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urg7f"]
+atlas = ExtResource("1_pa6pj")
+region = Rect2(224, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nacw5"]
+atlas = ExtResource("1_pa6pj")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jpnn7"]
+atlas = ExtResource("1_pa6pj")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i38ow"]
+atlas = ExtResource("1_pa6pj")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shxn6"]
+atlas = ExtResource("1_pa6pj")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3bdx2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nq76l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ee83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42w0t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ijlau")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqwnb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1vfc7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yylsp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urg7f")
+}],
+"loop": true,
+"name": &"charge",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nacw5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jpnn7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i38ow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shxn6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nq76l"]
+size = Vector2(500, 500)
+
+[node name="Manalintad" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite")]
+scale = Vector2(6, 6)
+script = ExtResource("1_nq76l")
+animated_sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.25, -5)
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_3bdx2")
+animation = &"idle"
+frame_progress = 0.832439
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(2.66667, -1.16667)
+rotation = 1.5708
+polygon = PackedVector2Array(2.33333, 16.8333, -9.16667, 4.83333, -9.16667, -8.33333, 2.83333, -14.8333, 11.3333, -12.1667, 11.3333, 8.33333, 8.83333, 15.6667)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="DetectionBox" type="Area2D" parent="."]
+visible = false
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionBox"]
+shape = SubResource("RectangleShape2D_nq76l")
+
+[connection signal="body_shape_entered" from="DetectionBox" to="." method="_on_detection_box_body_shape_entered"]
+[connection signal="body_shape_exited" from="DetectionBox" to="." method="_on_detection_box_body_shape_exited"]
