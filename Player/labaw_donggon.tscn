@@ -264,7 +264,7 @@ size = Vector2(74, 70)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite")]
 z_index = 1
-collision_layer = 3
+collision_layer = 7
 script = ExtResource("1_a0fe6")
 animated_sprite = NodePath("Sprite2D")
 
@@ -324,6 +324,7 @@ health = NodePath("../Health")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtbox"]
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_xqg5b")
+debug_color = Color(0.993573, 0, 0.235557, 0.42)
 
 [node name="HitBox" type="Area2D" parent="." groups=["Sword"]]
 collision_layer = 2
@@ -333,6 +334,7 @@ collision_mask = 2
 position = Vector2(77, 5)
 shape = SubResource("RectangleShape2D_v3vdj")
 disabled = true
+debug_color = Color(0.63952, 0.525123, 1.92523e-07, 0.42)
 
 [connection signal="animation_finished" from="Sprite2D" to="." method="_on_sprite_2d_animation_finished"]
 [connection signal="healthDamaged" from="Health" to="." method="_on_health_health_damaged"]
