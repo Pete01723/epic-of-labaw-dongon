@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2m4p2h8426o0"]
+
+[sub_resource type="GDScript" id="GDScript_yqxbn"]
+script/source = "extends RigidBody2D
+
+func _on_body_shape_entered(body_rid: RID, body: Node, body_shape_index: int, local_shape_index: int) -> void:
+	print(body)
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5tvs8"]
+size = Vector2(32, 32)
+
+[node name="PushBlockTest" type="RigidBody2D"]
+collision_mask = 7
+script = SubResource("GDScript_yqxbn")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5tvs8")
