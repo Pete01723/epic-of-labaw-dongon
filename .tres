@@ -1,0 +1,18 @@
+[gd_resource type="BehaviorTree" load_steps=6 format=3 uid="uid://bnlb852bk738k"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_l12o0"]
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_l12o0"]
+
+[sub_resource type="BTSequence" id="BTSequence_l12o0"]
+children = [SubResource("BTConsolePrint_l12o0")]
+
+[sub_resource type="BTSelector" id="BTSelector_mjalf"]
+custom_name = "Charge"
+
+[sub_resource type="BTSelector" id="BTSelector_2gidd"]
+children = [SubResource("BTSequence_l12o0"), SubResource("BTSelector_mjalf")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_l12o0")
+root_task = SubResource("BTSelector_2gidd")

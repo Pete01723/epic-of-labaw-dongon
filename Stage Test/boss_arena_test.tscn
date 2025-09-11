@@ -8,6 +8,8 @@
 scenes/1/scene = ExtResource("1_blgf8")
 
 [sub_resource type="TileSet" id="TileSet_lhcfx"]
+physics_layer_0/collision_layer = 3
+physics_layer_0/collision_mask = 3
 sources/2 = SubResource("TileSetScenesCollectionSource_ah7me")
 
 [node name="BossArenaTest" type="Node2D"]
@@ -19,4 +21,8 @@ tile_set = SubResource("TileSet_lhcfx")
 [node name="RoomInstance" parent="." instance=ExtResource("2_ah7me")]
 
 [node name="Manalintad" parent="." instance=ExtResource("3_lhcfx")]
+light_mask = 5
+visibility_layer = 3
 position = Vector2(1165, 626)
+collision_layer = 128
+collision_mask = 4
