@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://beot8f2iud1q3"]
+
+[ext_resource type="Script" uid="uid://brnqtwhyllwpl" path="res://Stage Test/puzzle_door_test.gd" id="1_udhh2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mxusv"]
+size = Vector2(16, 16)
+
+[node name="Puzzle Door Test" type="StaticBody2D"]
+script = ExtResource("1_udhh2")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-8, -40, 8, -40, 8, 40, -8, 40)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mxusv")
