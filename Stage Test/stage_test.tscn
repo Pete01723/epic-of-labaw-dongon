@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=4 uid="uid://202ku7ke3chr"]
+[gd_scene load_steps=9 format=4 uid="uid://202ku7ke3chr"]
 
 [ext_resource type="PackedScene" uid="uid://didlo5t01q6q8" path="res://Stage Test/block_test.tscn" id="1_hlaag"]
 [ext_resource type="Script" uid="uid://bicaky3cwhhj4" path="res://Stage Test/stage_test.gd" id="1_pa6e5"]
+[ext_resource type="PackedScene" uid="uid://beot8f2iud1q3" path="res://Stage Test/puzzle_door_test.tscn" id="2_imifp"]
 [ext_resource type="PackedScene" uid="uid://d2m4p2h8426o0" path="res://Stage Test/push_block_test.tscn" id="4_pa6e5"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="5_hkhd7"]
+[ext_resource type="PackedScene" uid="uid://48xe0k1xb3wr" path="res://Stage Test/puzzle_button_test.tscn" id="5_imifp"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_pa6e5"]
 scenes/1/scene = ExtResource("1_hlaag")
@@ -23,6 +25,15 @@ color = Color(0.355314, 0.355314, 0.355314, 1)
 
 [node name="Spawn Player" type="Marker2D" parent="."]
 position = Vector2(64, 640)
+
+[node name="Solved Puzzled Door" type="Marker2D" parent="."]
+position = Vector2(1272, 232)
+
+[node name="Puzzle Door Test" parent="." instance=ExtResource("2_imifp")]
+position = Vector2(1272, 312)
+
+[node name="Puzzle Button Test" parent="." instance=ExtResource("5_imifp")]
+position = Vector2(960, 688)
 
 [node name="TestPushBlock" parent="." instance=ExtResource("4_pa6e5")]
 position = Vector2(823, 597)

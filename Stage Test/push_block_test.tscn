@@ -1,4 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2m4p2h8426o0"]
+[gd_scene load_steps=4 format=3 uid="uid://d2m4p2h8426o0"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kdj1b"]
+friction = 0.5
 
 [sub_resource type="GDScript" id="GDScript_yqxbn"]
 script/source = "extends RigidBody2D
@@ -12,6 +15,7 @@ size = Vector2(32, 32)
 
 [node name="PushBlockTest" type="RigidBody2D"]
 collision_mask = 7
+physics_material_override = SubResource("PhysicsMaterial_kdj1b")
 script = SubResource("GDScript_yqxbn")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]

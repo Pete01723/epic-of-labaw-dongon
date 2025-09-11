@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://48xe0k1xb3wr"]
+
+[ext_resource type="Script" uid="uid://bocya8ggct888" path="res://Stage Test/puzzle_button_test.gd" id="1_bjibs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gyp0b"]
+size = Vector2(32, 8)
+
+[node name="Puzzle Button Test" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_bjibs")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-16, -8, 16, -8, 16, 0, -16, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_gyp0b")
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="." to="." method="_on_body_shape_exited"]
