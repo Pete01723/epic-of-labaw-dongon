@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_ui0vk")
 theme = ExtResource("2_ui0vk")
-map_root_folder = "res://Stage Test/"
+map_root_folder = "res://"
 map_extents = 100
 scene_template = ""
 in_game_cell_size = Vector2(1280, 700)
