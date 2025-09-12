@@ -260,7 +260,7 @@ size = Vector2(40, 72)
 size = Vector2(48, 72)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v3vdj"]
-size = Vector2(74, 70)
+size = Vector2(88, 70)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite")]
 z_index = 1
@@ -331,7 +331,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(77, 5)
+position = Vector2(70, 5)
 shape = SubResource("RectangleShape2D_v3vdj")
 disabled = true
 debug_color = Color(0.63952, 0.525123, 1.92523e-07, 0.42)
