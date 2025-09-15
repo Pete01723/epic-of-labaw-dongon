@@ -7,10 +7,10 @@
 [ext_resource type="Script" uid="uid://cus65uv030qs7" path="res://Components/movement.gd" id="5_5rj3w"]
 [ext_resource type="Texture2D" uid="uid://cc5a7scnhmqlt" path="res://Assets/Placeholder/Player Character/_Idle.png" id="5_h721w"]
 [ext_resource type="Resource" uid="uid://b0le7o6uh7g87" path="res://Player/player_attack_values.tres" id="5_ri7ce"]
+[ext_resource type="Script" uid="uid://cinb8h0qqh0ad" path="res://Components/health_component.gd" id="6_pycxr"]
 [ext_resource type="Texture2D" uid="uid://s5r8ous47cbl" path="res://Assets/Placeholder/Player Character/_Jump.png" id="6_w2tls"]
 [ext_resource type="Texture2D" uid="uid://2x5y847k1gud" path="res://Assets/Textures/2d_radial_point_light.webp" id="7_h5vyo"]
 [ext_resource type="Texture2D" uid="uid://bbpiyxi5y7ibt" path="res://Assets/Placeholder/Player Character/_Run.png" id="7_l406c"]
-[ext_resource type="Script" uid="uid://cinb8h0qqh0ad" path="res://Player/health.gd" id="10_ri7ce"]
 [ext_resource type="Resource" uid="uid://cqqtgrsev1jp5" path="res://Player/player_health.tres" id="11_pycxr"]
 [ext_resource type="Script" uid="uid://dj0mo3ywool2i" path="res://Components/attack_component.gd" id="12_xqg5b"]
 [ext_resource type="Script" uid="uid://btdbi8to5koaf" path="res://Enemies/Test Enemy/hurt_box.gd" id="14_pycxr"]
@@ -281,6 +281,11 @@ hitbox = NodePath("../HitBox/CollisionShape2D")
 attack_values = ExtResource("5_ri7ce")
 metadata/_custom_type_script = "uid://dj0mo3ywool2i"
 
+[node name="Health" type="Node" parent="."]
+script = ExtResource("6_pycxr")
+health = ExtResource("11_pycxr")
+metadata/_custom_type_script = "uid://cinb8h0qqh0ad"
+
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 1.5)
 limit_left = 0
@@ -310,10 +315,6 @@ position = Vector2(4, -7)
 energy = 0.2
 texture = ExtResource("7_h5vyo")
 texture_scale = 0.6
-
-[node name="Health" type="Node2D" parent="."]
-script = ExtResource("10_ri7ce")
-health = ExtResource("11_pycxr")
 
 [node name="PlayerHurtbox" type="Area2D" parent="." node_paths=PackedStringArray("health")]
 collision_layer = 2

@@ -8,4 +8,6 @@ func _ready():
 	player.healthChanged.connect(update)
 
 func update():
-	value = (player.get_child(6).health.current_health_points*100)/player.get_child(6).health.max_health_points
+	for i in player.get_child_count():
+		if player.get_child(i).name == "Health":
+			value = (player.get_child(i).health.current_health_points*100)/player.get_child(i).health.max_health_points
