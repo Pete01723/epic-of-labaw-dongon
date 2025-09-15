@@ -11,13 +11,12 @@ config_version=5
 [application]
 
 config/name="Epic of Labaw Doggon"
-run/main_scene="uid://b3mjftvlf4np"
+run/main_scene="uid://dna18tdxlu2uf"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-Main="*res://main.gd"
 MetSys="*res://addons/MetroidvaniaSystem/Nodes/Singleton.tscn"
 
 [display]
