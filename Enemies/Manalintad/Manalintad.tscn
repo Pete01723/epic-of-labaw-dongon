@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cw1s7du2q0s0p"]
+[gd_scene load_steps=18 format=3 uid="uid://cw1s7du2q0s0p"]
 
 [ext_resource type="Script" uid="uid://coa0gv12k8ubi" path="res://Enemies/Manalintad/manalintad.gd" id="1_nq76l"]
 [ext_resource type="Texture2D" uid="uid://blvv0n08c7fe1" path="res://Assets/Placeholder/Boss/Manalintad/Boar - Sprite Sheet.png" id="1_pa6pj"]
@@ -103,8 +103,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nq76l"]
 size = Vector2(500, 500)
 
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_nq76l"]
+
 [node name="Manalintad" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite")]
 scale = Vector2(6, 6)
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("1_nq76l")
 animated_sprite = NodePath("AnimatedSprite2D")
 
@@ -128,6 +132,9 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionBox"]
 shape = SubResource("RectangleShape2D_nq76l")
+
+[node name="BTPlayer" type="BTPlayer" parent="."]
+blackboard_plan = SubResource("BlackboardPlan_nq76l")
 
 [connection signal="body_shape_entered" from="DetectionBox" to="." method="_on_detection_box_body_shape_entered"]
 [connection signal="body_shape_exited" from="DetectionBox" to="." method="_on_detection_box_body_shape_exited"]

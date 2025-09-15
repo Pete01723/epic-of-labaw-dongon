@@ -3,9 +3,8 @@ extends TextureProgressBar
 @export var player : CharacterBody2D
 
 func _ready():
-	update()
-	print(value)
 	player.healthChanged.connect(update)
+	update()
 
 func update():
 	for i in player.get_child_count():
