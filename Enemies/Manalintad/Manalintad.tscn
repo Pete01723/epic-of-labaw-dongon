@@ -1,7 +1,133 @@
-[gd_scene load_steps=18 format=3 uid="uid://cw1s7du2q0s0p"]
+[gd_scene load_steps=28 format=3 uid="uid://cw1s7du2q0s0p"]
 
 [ext_resource type="Script" uid="uid://coa0gv12k8ubi" path="res://Enemies/Manalintad/manalintad.gd" id="1_nq76l"]
 [ext_resource type="Texture2D" uid="uid://blvv0n08c7fe1" path="res://Assets/Placeholder/Boss/Manalintad/Boar - Sprite Sheet.png" id="1_pa6pj"]
+[ext_resource type="Script" uid="uid://b1omcnecl1bnk" path="res://Enemies/Manalintad/manalintad_attack_component.gd" id="2_yylsp"]
+[ext_resource type="BehaviorTree" uid="uid://tqdngbxejj3h" path="res://ai/just_charge.tres" id="3_3ee83"]
+[ext_resource type="Resource" uid="uid://dxiprpg8wuyjl" path="res://Enemies/Manalintad/test_enemy_attack_values.tres" id="3_urg7f"]
+[ext_resource type="Script" uid="uid://cinb8h0qqh0ad" path="res://Components/health_component.gd" id="4_nacw5"]
+[ext_resource type="Resource" uid="uid://c6ft4wv1p53p5" path="res://Enemies/Manalintad/health.tres" id="5_jpnn7"]
+[ext_resource type="Script" uid="uid://bkvhy3730q0sw" path="res://Enemies/Manalintad/hurtbox.gd" id="7_i38ow"]
+
+[sub_resource type="Animation" id="Animation_42w0t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.25, -5)]
+}
+
+[sub_resource type="Animation" id="Animation_ijlau"]
+resource_name = "charge"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"charge", &"charge"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_3ee83"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+
+[sub_resource type="Animation" id="Animation_yylsp"]
+resource_name = "shake"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.633333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1.25, -5), Vector2(2, -5), Vector2(-2, -5), Vector2(1, -5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ijlau"]
+_data = {
+&"RESET": SubResource("Animation_42w0t"),
+&"charge": SubResource("Animation_ijlau"),
+&"idle": SubResource("Animation_3ee83"),
+&"shake": SubResource("Animation_yylsp")
+}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nq76l"]
 atlas = ExtResource("1_pa6pj")
@@ -100,41 +226,58 @@ animations = [{
 "speed": 7.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nq76l"]
-size = Vector2(500, 500)
-
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_nq76l"]
 
 [node name="Manalintad" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite")]
 scale = Vector2(6, 6)
 collision_layer = 4
-collision_mask = 2
 script = ExtResource("1_nq76l")
 animated_sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ijlau")
+}
+autoplay = "idle"
+
+[node name="ManalintadAttackComponent" type="Node" parent="." node_paths=PackedStringArray("character", "hitbox", "attackbox")]
+script = ExtResource("2_yylsp")
+character = NodePath("..")
+hitbox = NodePath("../CollisionShape2D")
+attackbox = NodePath("../HitBox/CollisionShape2D")
+attack_values = ExtResource("3_urg7f")
+
+[node name="Health" type="Node2D" parent="."]
+script = ExtResource("4_nacw5")
+health = ExtResource("5_jpnn7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1.25, -5)
 scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_3bdx2")
 animation = &"idle"
-frame_progress = 0.832439
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(2.66667, -1.16667)
 rotation = 1.5708
-polygon = PackedVector2Array(2.33333, 16.8333, -9.16667, 4.83333, -9.16667, -8.33333, 2.83333, -14.8333, 11.3333, -12.1667, 11.3333, 8.33333, 8.83333, 15.6667)
+polygon = PackedVector2Array(3.83339, 14.6667, -5.66665, 4.83336, -6.00002, -5.66664, 2.83333, -14.8333, 11.3333, -12.1667, 11.3333, 8.33333, 8.83333, 15.6667)
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-
-[node name="DetectionBox" type="Area2D" parent="."]
-visible = false
+[node name="HitBox" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+collision_layer = 0
 collision_mask = 2
+script = ExtResource("7_i38ow")
+health = NodePath("../Health")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionBox"]
-shape = SubResource("RectangleShape2D_nq76l")
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="HitBox"]
+position = Vector2(2.66667, -1.16667)
+rotation = 1.5708
+polygon = PackedVector2Array(4.00006, 14.8333, -5.66665, 5.00002, -5.83335, -5.66664, 2.83333, -14.8333, 11.3333, -12.1667, 11.3333, 8.33333, 8.83333, 15.6667)
+
+[node name="CollisitionTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="BTPlayer" type="BTPlayer" parent="."]
+behavior_tree = ExtResource("3_3ee83")
 blackboard_plan = SubResource("BlackboardPlan_nq76l")
 
-[connection signal="body_shape_entered" from="DetectionBox" to="." method="_on_detection_box_body_shape_entered"]
-[connection signal="body_shape_exited" from="DetectionBox" to="." method="_on_detection_box_body_shape_exited"]
+[connection signal="area_entered" from="HitBox" to="." method="_on_hurtbox_area_entered"]

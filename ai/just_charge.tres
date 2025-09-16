@@ -1,0 +1,71 @@
+[gd_resource type="BehaviorTree" load_steps=20 format=3 uid="uid://tqdngbxejj3h"]
+
+[ext_resource type="Script" uid="uid://ctpyehtepsoid" path="res://ai/tasks/charge.gd" id="1_hchb0"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_5a0v8"]
+
+[sub_resource type="BBNode" id="BBNode_j3qi1"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_veo1w"]
+animation_player = SubResource("BBNode_j3qi1")
+animation_name = &"idle"
+
+[sub_resource type="BTWait" id="BTWait_hchb0"]
+duration = 2.0
+
+[sub_resource type="BTSequence" id="BTSequence_hsuo4"]
+children = [SubResource("BTWait_hchb0")]
+
+[sub_resource type="BBNode" id="BBNode_veo1w"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_7278q"]
+animation_player = SubResource("BBNode_veo1w")
+animation_name = &"shake"
+
+[sub_resource type="BBNode" id="BBNode_uuonq"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTAwaitAnimation" id="BTAwaitAnimation_2nrof"]
+animation_player = SubResource("BBNode_uuonq")
+animation_name = &"shake"
+
+[sub_resource type="BBNode" id="BBNode_hchb0"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_j3qi1"]
+animation_player = SubResource("BBNode_hchb0")
+animation_name = &"charge"
+blend = 0.1
+
+[sub_resource type="BTAction" id="BTAction_7278q"]
+script = ExtResource("1_hchb0")
+
+[sub_resource type="BTWait" id="BTWait_veo1w"]
+duration = 2.0
+
+[sub_resource type="BBNode" id="BBNode_7278q"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTStopAnimation" id="BTStopAnimation_uuonq"]
+animation_player = SubResource("BBNode_7278q")
+
+[sub_resource type="BTSequence" id="BTSequence_uuonq"]
+custom_name = "Charge"
+children = [SubResource("BTPlayAnimation_7278q"), SubResource("BTAwaitAnimation_2nrof"), SubResource("BTPlayAnimation_j3qi1"), SubResource("BTAction_7278q"), SubResource("BTWait_veo1w"), SubResource("BTStopAnimation_uuonq")]
+
+[sub_resource type="BTProbabilitySelector" id="BTProbabilitySelector_2nrof"]
+children = [SubResource("BTSequence_hsuo4"), SubResource("BTSequence_uuonq")]
+
+[sub_resource type="BTSequence" id="BTSequence_j3qi1"]
+children = [SubResource("BTPlayAnimation_veo1w"), SubResource("BTProbabilitySelector_2nrof")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_5a0v8")
+root_task = SubResource("BTSequence_j3qi1")
