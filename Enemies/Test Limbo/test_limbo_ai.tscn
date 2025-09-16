@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cno3quyxuwrty"]
+
+[ext_resource type="Texture2D" uid="uid://brvog0l76y6m1" path="res://Enemies/Test Limbo/icon.svg" id="1_iv5wg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_drxf6"]
+size = Vector2(127, 126)
+
+[node name="TestLimboAi" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_drxf6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_iv5wg")

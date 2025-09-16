@@ -39,3 +39,5 @@ texture_over = ExtResource("3_t88pq")
 texture_progress = ExtResource("4_r0x5m")
 script = ExtResource("3_u44n3")
 player = NodePath("../../Player")
+
+[connection signal="healthChanged" from="Player" to="CanvasLayer/TextureProgressBar" method="_on_player_health_changed"]

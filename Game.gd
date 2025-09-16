@@ -31,6 +31,7 @@ func _music_check():
 	current_room = MetSys.get_current_room_instance()
 	if current_room.room_name == 'Stage Test/stage_test.tscn' || current_room.room_name == 'Stage Test/stage_test2.tscn' || current_room.room_name == "Forest Stage/level_1.tscn":
 		if !music.is_playing():
+			ForestTheme.loop = true
 			music.stream = ForestTheme
 			music.play()
 	

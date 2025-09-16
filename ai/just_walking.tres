@@ -1,0 +1,18 @@
+[gd_resource type="BehaviorTree" load_steps=5 format=3 uid="uid://dw8jq2mit4lbk"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_5w1ux"]
+
+[sub_resource type="BBNode" id="BBNode_fu3h6"]
+saved_value = NodePath("AnimatedSprite2D")
+resource_name = "AnimatedSprite2D"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_hdlnv"]
+animation_player = SubResource("BBNode_fu3h6")
+animation_name = &"walk"
+
+[sub_resource type="BTSelector" id="BTSelector_celac"]
+children = [SubResource("BTPlayAnimation_hdlnv")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_5w1ux")
+root_task = SubResource("BTSelector_celac")
