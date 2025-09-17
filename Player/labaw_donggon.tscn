@@ -256,13 +256,14 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_50to8"]
 size = Vector2(40, 72)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xqg5b"]
-size = Vector2(48, 72)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pycxr"]
+radius = 18.0
+height = 70.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v3vdj"]
 size = Vector2(88, 70)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite") groups=["Player"]]
 z_index = 1
 collision_layer = 2
 script = ExtResource("1_a0fe6")
@@ -323,8 +324,8 @@ script = ExtResource("14_pycxr")
 health = NodePath("../Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtbox"]
-position = Vector2(0, 4)
-shape = SubResource("RectangleShape2D_xqg5b")
+position = Vector2(-3, 0)
+shape = SubResource("CapsuleShape2D_pycxr")
 debug_color = Color(0.993573, 0, 0.235557, 0.42)
 
 [node name="HitBox" type="Area2D" parent="." groups=["Sword"]]
@@ -332,7 +333,7 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(70, 5)
+position = Vector2(64, 5)
 shape = SubResource("RectangleShape2D_v3vdj")
 disabled = true
 debug_color = Color(0.63952, 0.525123, 1.92523e-07, 0.42)

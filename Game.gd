@@ -12,6 +12,8 @@ var current_room: RoomInstance
 
 @onready var music = $AudioStreamPlayer
 var ForestTheme = preload("res://Assets/Music/Forest Theme.mp3")
+var ManalintadTheme = preload("res://Assets/Music/Guardian of the Forest.mp3")
+
 
 func _ready() -> void:
 	MetSys.reset_state()
@@ -33,6 +35,10 @@ func _music_check():
 		if !music.is_playing():
 			ForestTheme.loop = true
 			music.stream = ForestTheme
+			music.play()
+	if current_room.room_name == "Forest Stage/level_2.tscn":
+			ManalintadTheme.loop = true
+			music.stream = ManalintadTheme
 			music.play()
 	
 static func get_singleton() -> Game:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cw1s7du2q0s0p"]
+[gd_scene load_steps=29 format=3 uid="uid://cw1s7du2q0s0p"]
 
 [ext_resource type="Script" uid="uid://coa0gv12k8ubi" path="res://Enemies/Manalintad/manalintad.gd" id="1_nq76l"]
 [ext_resource type="Texture2D" uid="uid://blvv0n08c7fe1" path="res://Assets/Placeholder/Boss/Manalintad/Boar - Sprite Sheet.png" id="1_pa6pj"]
@@ -106,6 +106,21 @@ tracks/1/keys = {
 "values": [&"idle"]
 }
 
+[sub_resource type="Animation" id="Animation_urg7f"]
+resource_name = "jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.25, -5), Vector2(1.25, -10), Vector2(1.25, -5)]
+}
+
 [sub_resource type="Animation" id="Animation_yylsp"]
 resource_name = "shake"
 tracks/0/type = "value"
@@ -126,6 +141,7 @@ _data = {
 &"RESET": SubResource("Animation_42w0t"),
 &"charge": SubResource("Animation_ijlau"),
 &"idle": SubResource("Animation_3ee83"),
+&"jump": SubResource("Animation_urg7f"),
 &"shake": SubResource("Animation_yylsp")
 }
 
@@ -244,7 +260,7 @@ autoplay = "idle"
 script = ExtResource("2_yylsp")
 character = NodePath("..")
 hitbox = NodePath("../CollisionShape2D")
-attackbox = NodePath("../HitBox/CollisionShape2D")
+attackbox = NodePath("../EnemyHitBox/CollisionShape2D")
 attack_values = ExtResource("3_urg7f")
 
 [node name="Health" type="Node2D" parent="."]
@@ -262,13 +278,13 @@ position = Vector2(2.66667, -1.16667)
 rotation = 1.5708
 polygon = PackedVector2Array(3.83339, 14.6667, -5.66665, 4.83336, -6.00002, -5.66664, 2.83333, -14.8333, 11.3333, -12.1667, 11.3333, 8.33333, 8.83333, 15.6667)
 
-[node name="HitBox" type="Area2D" parent="." node_paths=PackedStringArray("health")]
-collision_layer = 0
+[node name="EnemyHitBox" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+collision_layer = 4
 collision_mask = 2
 script = ExtResource("7_i38ow")
 health = NodePath("../Health")
 
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="HitBox"]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="EnemyHitBox"]
 position = Vector2(2.66667, -1.16667)
 rotation = 1.5708
 polygon = PackedVector2Array(4.00006, 14.8333, -5.66665, 5.00002, -5.83335, -5.66664, 2.83333, -14.8333, 11.3333, -12.1667, 11.3333, 8.33333, 8.83333, 15.6667)
@@ -280,4 +296,4 @@ one_shot = true
 behavior_tree = ExtResource("3_3ee83")
 blackboard_plan = SubResource("BlackboardPlan_nq76l")
 
-[connection signal="area_entered" from="HitBox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="area_entered" from="EnemyHitBox" to="." method="_on_hurtbox_area_entered"]

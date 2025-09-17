@@ -28,10 +28,12 @@ func _on_detection_box_body_shape_entered(body_rid: RID, body: Node2D, body_shap
 
 func _on_detection_box_body_shape_exited(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	player = null
-
-
+	
 func _on_hurtbox_area_entered(area:Area2D)->void:
 	if $CollisitionTimer.is_stopped():
 		if area.name == "PlayerHurtbox":
 			$ManalintadAttackComponent.Hits(area)
 			$CollisitionTimer.start()
+			
+		if area.name == "HitBox":
+			$ManalintadAttackComponent.Hits(area)
