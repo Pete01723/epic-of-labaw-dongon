@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dnp2fctfglpmq" path="res://Assets/Forest/bgrd_tree1.png" id="7_6ewy0"]
 [ext_resource type="Texture2D" uid="uid://bss150uli3b1g" path="res://Assets/Forest/env_ground.png" id="8_ivwt1"]
 
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0uutn"]
 texture = ExtResource("8_ivwt1")
 1:0/0 = 0
@@ -549,6 +550,11 @@ texture = ExtResource("8_ivwt1")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_0uutn")
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_5p0b2"]
+vertices = PackedVector2Array(259, 450.031, 1264.63, 447.031, 1255.36, 703.891, 34.0625, 690.109, 36.9375, 213.789, 259, 209.211)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4, 5)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(27, 204, 269, 199, 269, 440, 1275, 437, 1265, 714, 24, 700)])
+
 [node name="Level1" type="Node2D"]
 
 [node name="RoomInstance" parent="." instance=ExtResource("1_4qsud")]
@@ -611,3 +617,4 @@ tile_set = SubResource("TileSet_5hrtb")
 
 [node name="Spawn Player" type="Marker2D" parent="."]
 position = Vector2(448, 624)
+

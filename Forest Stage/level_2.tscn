@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dnp2fctfglpmq" path="res://Assets/Forest/bgrd_tree1.png" id="7_h44l0"]
 [ext_resource type="Texture2D" uid="uid://bss150uli3b1g" path="res://Assets/Forest/env_ground.png" id="8_h5wlb"]
 
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_owm2i"]
 texture = ExtResource("8_h5wlb")
 1:0/0 = 0
@@ -543,7 +544,6 @@ sources/0 = SubResource("TileSetAtlasSource_owm2i")
 [node name="RoomInstance" parent="." instance=ExtResource("1_1p6ij")]
 
 [node name="ParallaxGroup" type="Node2D" parent="."]
-
 [node name="Parallax2D" type="Parallax2D" parent="ParallaxGroup"]
 repeat_size = Vector2(1280, 0)
 

@@ -14,6 +14,7 @@ func _physics_process(delta: float) -> void:
 	Handle_Animation()
 	move_and_slide()
 	
+	
 func Handle_Animation():
 	if velocity.x != 0 && is_attacking == false: 
 		animated_sprite.play("walk")

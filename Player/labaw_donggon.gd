@@ -47,7 +47,7 @@ func on_enter():
 
 func _on_sprite_2d_animation_finished():
 	if animated_sprite.animation == 'attack':
-		is_attacking = false		
+		is_attacking = false
 
 func _on_hit_box_area_entered(area: Area2D) -> void:
 	$AttackComponent.Hits(area)
