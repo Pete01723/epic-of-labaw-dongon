@@ -8,12 +8,17 @@ var custom_run: bool
 
 var current_room: RoomInstance
 
+var isMusicPlaying: bool
+
 
 
 @onready var music = $AudioStreamPlayer
 var ForestTheme = preload("res://Assets/Music/Forest Theme.mp3")
 var ManalintadTheme = preload("res://Assets/Music/Guardian of the Forest.mp3")
 
+func _process(delta):
+	if music.is_playing():
+		pass
 
 func _ready() -> void:
 	MetSys.reset_state()
@@ -36,7 +41,7 @@ func _music_check():
 			ForestTheme.loop = true
 			music.stream = ForestTheme
 			music.play()
-	if current_room.room_name == "Forest Stage/level_2.tscn":
+	elif current_room.room_name == "Forest Stage/level_2.tscn":
 			ManalintadTheme.loop = true
 			music.stream = ManalintadTheme
 			music.play()

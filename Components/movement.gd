@@ -3,14 +3,14 @@ class_name PlayerMovementComponent
 
 @export var movement_values: MovementValuesComponent
 @export var current_character: CharacterBody2D
+@export var grapple_controller: Node2D 
 
 func Apply_Gravity(delta):
 	if not current_character.is_on_floor():
-		current_character.velocity.y += movement_values.gravity * delta
+		current_character.velocity += current_character.get_gravity() * delta
 		
 func Handle_Jump():
-	if current_character.is_on_floor():
-		if Input.is_action_just_pressed("ui_up"):
+	if Input.is_action_just_pressed("ui_up") and (current_character.is_on_floor() || grapple_controller.launched == true):
 			current_character.velocity.y = movement_values.JUMP_VELOCITY
 			
 func Apply_Friction(direction, delta):
@@ -19,7 +19,8 @@ func Apply_Friction(direction, delta):
 
 func Apply_Air_Resistance(delta):
 	if current_character.velocity.x != 0 and not current_character.is_on_floor():
-		current_character.velocity.x = move_toward(current_character.velocity.x, 0.0, movement_values.AIR_RESISTANCE * delta)
+		if grapple_controller.launched == false:
+			current_character.velocity.x = move_toward(current_character.velocity.x, 0.0, movement_values.AIR_RESISTANCE * delta)
 
 func Handle_Acceleration(direction, delta):
 	if not current_character.is_on_floor(): 
@@ -30,5 +31,5 @@ func Handle_Acceleration(direction, delta):
 func Handle_Air_Acceleration(direction, delta):
 	if current_character.is_on_floor(): 
 		return
-	if direction != 0:
+	if direction != 0 && grapple_controller.launched == false:
 		current_character.velocity.x = move_toward(current_character.velocity.x, movement_values.SPEED * direction, movement_values.AIR_ACCELERATION * delta)

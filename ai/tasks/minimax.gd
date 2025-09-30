@@ -21,7 +21,7 @@ func _tick(delta):
 func best_move():
 	agent_tree = agent.get_tree()
 	var manalintad_health = agent.get_child(2).health.current_health_points
-	var player_health = agent_tree.get_first_node_in_group('Player').get_child(2).health.current_health_points
+	var player_health = agent_tree.get_first_node_in_group('Player').get_child(3).health.current_health_points
 	var score
 	var best_score = -INF
 	var history_copy = history

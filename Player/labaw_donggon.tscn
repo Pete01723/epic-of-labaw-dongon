@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://bti8vlanloo2p"]
+[gd_scene load_steps=51 format=3 uid="uid://bti8vlanloo2p"]
 
 [ext_resource type="Script" uid="uid://h2dkd5fjxsfu" path="res://Player/labaw_donggon.gd" id="1_a0fe6"]
 [ext_resource type="Resource" uid="uid://clxprto1xvdt5" path="res://Player/labaw_donggon_movement_values.tres" id="3_v8w7h"]
@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://b0le7o6uh7g87" path="res://Player/player_attack_values.tres" id="5_ri7ce"]
 [ext_resource type="Script" uid="uid://cinb8h0qqh0ad" path="res://Components/health_component.gd" id="6_pycxr"]
 [ext_resource type="Texture2D" uid="uid://s5r8ous47cbl" path="res://Assets/Placeholder/Player Character/_Jump.png" id="6_w2tls"]
+[ext_resource type="Script" uid="uid://m5vyd2bn6us2" path="res://Player/grapple_controller.gd" id="6_xqg5b"]
 [ext_resource type="Texture2D" uid="uid://2x5y847k1gud" path="res://Assets/Textures/2d_radial_point_light.webp" id="7_h5vyo"]
 [ext_resource type="Texture2D" uid="uid://bbpiyxi5y7ibt" path="res://Assets/Placeholder/Player Character/_Run.png" id="7_l406c"]
 [ext_resource type="Resource" uid="uid://cqqtgrsev1jp5" path="res://Player/player_health.tres" id="11_pycxr"]
@@ -263,17 +264,20 @@ height = 70.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v3vdj"]
 size = Vector2(88, 70)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_xqg5b"]
+radius = 309.006
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite") groups=["Player"]]
 z_index = 1
 collision_layer = 2
 script = ExtResource("1_a0fe6")
 animated_sprite = NodePath("Sprite2D")
 
-[node name="PlayerMovementComponent" type="Node" parent="." node_paths=PackedStringArray("current_character")]
+[node name="PlayerMovementComponent" type="Node" parent="." node_paths=PackedStringArray("current_character", "grapple_controller")]
 script = ExtResource("5_5rj3w")
 movement_values = ExtResource("3_v8w7h")
 current_character = NodePath("..")
-metadata/_custom_type_script = "uid://cus65uv030qs7"
+grapple_controller = NodePath("../GrappleController")
 
 [node name="AttackComponent" type="Node" parent="." node_paths=PackedStringArray("character", "hitbox")]
 script = ExtResource("12_xqg5b")
@@ -281,6 +285,20 @@ character = NodePath("..")
 hitbox = NodePath("../HitBox/CollisionShape2D")
 attack_values = ExtResource("5_ri7ce")
 metadata/_custom_type_script = "uid://dj0mo3ywool2i"
+
+[node name="GrappleController" type="Node2D" parent="." node_paths=PackedStringArray("node_detector")]
+script = ExtResource("6_xqg5b")
+node_detector = NodePath("../GrappleNodeDetector")
+
+[node name="RayCast2D" type="RayCast2D" parent="GrappleController"]
+scale = Vector2(1.5, 1.5)
+target_position = Vector2(600, 0)
+collision_mask = 8
+collide_with_areas = true
+
+[node name="Line2D" type="Line2D" parent="GrappleController"]
+points = PackedVector2Array(0, 0, 0, 0)
+default_color = Color(1, 0, 0, 1)
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("6_pycxr")
@@ -337,6 +355,13 @@ position = Vector2(64, 5)
 shape = SubResource("RectangleShape2D_v3vdj")
 disabled = true
 debug_color = Color(0.63952, 0.525123, 1.92523e-07, 0.42)
+
+[node name="GrappleNodeDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrappleNodeDetector"]
+shape = SubResource("CircleShape2D_xqg5b")
 
 [connection signal="healthDamaged" from="Health" to="." method="_on_health_health_damaged"]
 [connection signal="animation_finished" from="Sprite2D" to="." method="_on_sprite_2d_animation_finished"]
