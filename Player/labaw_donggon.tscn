@@ -305,20 +305,6 @@ script = ExtResource("6_pycxr")
 health = ExtResource("11_pycxr")
 metadata/_custom_type_script = "uid://cinb8h0qqh0ad"
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.5, 1.5)
-limit_left = 0
-limit_top = 0
-limit_right = 1280
-limit_bottom = 720
-position_smoothing_enabled = true
-position_smoothing_speed = 3.0
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-drag_top_margin = 0.1
-drag_bottom_margin = 0.1
-editor_draw_drag_margin = true
-
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -40)
 scale = Vector2(1.99235, 2.0437)

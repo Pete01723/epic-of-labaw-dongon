@@ -1,16 +1,14 @@
 extends "res://addons/MetroidvaniaSystem/Template/Scripts/MetSysGame.gd"
 class_name Game
 const RoomInstance = preload("res://addons/MetroidvaniaSystem/Scripts/RoomInstance.gd")
+const SaveManager = preload("res://addons/MetroidvaniaSystem/Template/Scripts/SaveManager.gd")
+const SAVE_PATH = "user//player_save.sav"
+
+@export var starting_map: String
 
 var starting_coords: Vector2i
-
 var custom_run: bool
-
 var current_room: RoomInstance
-
-var isMusicPlaying: bool
-
-
 
 @onready var music = $AudioStreamPlayer
 var ForestTheme = preload("res://Assets/Music/Forest Theme.mp3")
@@ -21,20 +19,21 @@ func _process(delta):
 		pass
 
 func _ready() -> void:
+	get_script().set_meta(&"singleton", self)
 	MetSys.reset_state()
-	MetSys.set_save_data()
 	set_player($Player)
+	MetSys.set_save_data()
 	room_loaded.connect(init_room, CONNECT_DEFERRED)
-	load_room(^'Forest Stage/level_1.tscn')
-	_music_check()
+	load_room(starting_map)
+	music_check()
 	
 	var start := map.get_node_or_null(^"Spawn Player")
-	if start and not custom_run:
+	if start:
 		player.position = start.position
 	await get_tree().physics_frame
 	add_module("RoomTransitions.gd")
 
-func _music_check():
+func music_check():
 	current_room = MetSys.get_current_room_instance()
 	if current_room.room_name == 'Stage Test/stage_test.tscn' || current_room.room_name == 'Stage Test/stage_test2.tscn' || current_room.room_name == "Forest Stage/level_1.tscn":
 		if !music.is_playing():
