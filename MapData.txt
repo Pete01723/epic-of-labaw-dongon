@@ -1,12 +1,14 @@
 [0,0,0]
 1,0,0,0|||Forest Stage/level_1.tscn
-[-1,0,0]
-0,0,1,0|||boss_arena_test.tscn
-[-2,0,0]
-0,0,1,0|||stage_test2.tscn
-[-3,0,0]
-0,0,0,0|||stage_test.tscn
 [1,0,0]
 1,0,0,0|||Forest Stage/level_2.tscn
 [2,0,0]
 1,0,0,0|||Forest Stage/level_3.tscn
+[0,11,0]
+0,0,0,0|||stage_test.tscn
+[1,11,0]
+0,0,1,0|||stage_test2.tscn
+[2,11,0]
+0,0,1,0|||boss_arena_test.tscn
+[3,0,0]
+0,0,0,0|||Forest Stage/level_boss.tscn
