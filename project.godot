@@ -37,6 +37,7 @@ enabled=PackedStringArray("res://addons/MetroidvaniaSystem/EditorExtension/plugi
 [global_group]
 
 Sword=""
+Player=""
 
 [input]
 

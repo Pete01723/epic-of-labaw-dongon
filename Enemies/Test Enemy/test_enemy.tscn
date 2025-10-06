@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://c3f1nyoaoq8ea"]
+[gd_scene load_steps=61 format=3 uid="uid://c3f1nyoaoq8ea"]
 
 [ext_resource type="Script" uid="uid://bm6ajbjhm7rms" path="res://Enemies/Test Enemy/test_enemy.gd" id="1_j1l7f"]
 [ext_resource type="Texture2D" uid="uid://b0yhu6w5arjih" path="res://Assets/Placeholder/Skeleton Idle.png" id="2_1f57n"]
@@ -339,7 +339,10 @@ size = Vector2(40, 72)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kdyo3"]
 size = Vector2(24, 72)
 
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_vtan2"]
+
 [node name="Test Enemy" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite")]
+collision_layer = 4
 script = ExtResource("1_j1l7f")
 animated_sprite = NodePath("AnimatedSprite2D")
 
@@ -373,15 +376,17 @@ scale = Vector2(1.30729, 1.39326)
 shape = SubResource("RectangleShape2D_6mx17")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+navigation_layers = 4
 
 [node name="DetectionBox" type="Area2D" parent="."]
+collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionBox"]
 shape = SubResource("RectangleShape2D_amipo")
 
 [node name="EnemyHurtbox" type="Area2D" parent="." node_paths=PackedStringArray("health")]
-collision_layer = 2
+collision_layer = 4
 collision_mask = 2
 script = ExtResource("7_jqtjx")
 health = NodePath("../Health")
@@ -391,7 +396,7 @@ position = Vector2(-24, 0)
 shape = SubResource("RectangleShape2D_ekhdd")
 
 [node name="HitBox" type="Area2D" parent="." groups=["Sword"]]
-collision_layer = 2
+collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
@@ -413,6 +418,9 @@ one_shot = true
 
 [node name="CollisitionTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="BTPlayer" type="BTPlayer" parent="."]
+blackboard_plan = SubResource("BlackboardPlan_vtan2")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="tree_entered" from="CollisionShape2D" to="." method="_on_collision_shape_2d_tree_entered"]

@@ -1,0 +1,107 @@
+[gd_resource type="BehaviorTree" load_steps=28 format=3 uid="uid://tqdngbxejj3h"]
+
+[ext_resource type="Script" uid="uid://ctpyehtepsoid" path="res://ai/tasks/charge.gd" id="1_hchb0"]
+[ext_resource type="Script" uid="uid://c5ol8wu4adj4s" path="res://ai/tasks/minimax.gd" id="1_j3qi1"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_5a0v8"]
+var/best_possible_move/name = &"best_possible_move"
+var/best_possible_move/type = 4
+var/best_possible_move/value = ""
+var/best_possible_move/hint = 0
+var/best_possible_move/hint_string = ""
+
+[sub_resource type="BBNode" id="BBNode_j3qi1"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_veo1w"]
+animation_player = SubResource("BBNode_j3qi1")
+animation_name = &"idle"
+
+[sub_resource type="BTAction" id="BTAction_veo1w"]
+script = ExtResource("1_j3qi1")
+best_possible_move_var = &"best_possible_move"
+
+[sub_resource type="BBVariant" id="BBVariant_j3qi1"]
+type = 4
+saved_value = "antijump"
+resource_name = "antijump"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_veo1w"]
+variable = &"best_possible_move"
+value = SubResource("BBVariant_j3qi1")
+
+[sub_resource type="BBNode" id="BBNode_veo1w"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_j3qi1"]
+animation_player = SubResource("BBNode_veo1w")
+animation_name = &"jump"
+
+[sub_resource type="BTWait" id="BTWait_7278q"]
+duration = 2.0
+
+[sub_resource type="BTSequence" id="BTSequence_uuonq"]
+children = [SubResource("BTCheckVar_veo1w"), SubResource("BTPlayAnimation_j3qi1"), SubResource("BTWait_7278q")]
+
+[sub_resource type="BBVariant" id="BBVariant_2nrof"]
+type = 4
+saved_value = "jumpable_attack"
+resource_name = "jumpable_attack"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_ofiwh"]
+variable = &"best_possible_move"
+value = SubResource("BBVariant_2nrof")
+
+[sub_resource type="BBNode" id="BBNode_4e6ba"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_dvxas"]
+animation_player = SubResource("BBNode_4e6ba")
+animation_name = &"shake"
+
+[sub_resource type="BBNode" id="BBNode_fevyy"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTAwaitAnimation" id="BTAwaitAnimation_hsuo4"]
+animation_player = SubResource("BBNode_fevyy")
+animation_name = &"shake"
+
+[sub_resource type="BBNode" id="BBNode_msiyu"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_wfifw"]
+animation_player = SubResource("BBNode_msiyu")
+animation_name = &"charge"
+blend = 0.1
+
+[sub_resource type="BTAction" id="BTAction_bgn5w"]
+script = ExtResource("1_hchb0")
+
+[sub_resource type="BTWait" id="BTWait_4at2l"]
+duration = 2.0
+
+[sub_resource type="BBNode" id="BBNode_la5af"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTStopAnimation" id="BTStopAnimation_o3hor"]
+animation_player = SubResource("BBNode_la5af")
+
+[sub_resource type="BTSequence" id="BTSequence_c0mm8"]
+custom_name = "Charge"
+children = [SubResource("BTCheckVar_ofiwh"), SubResource("BTPlayAnimation_dvxas"), SubResource("BTAwaitAnimation_hsuo4"), SubResource("BTPlayAnimation_wfifw"), SubResource("BTAction_bgn5w"), SubResource("BTWait_4at2l"), SubResource("BTStopAnimation_o3hor")]
+
+[sub_resource type="BTSelector" id="BTSelector_j3qi1"]
+children = [SubResource("BTSequence_uuonq"), SubResource("BTSequence_c0mm8")]
+
+[sub_resource type="BTSequence" id="BTSequence_j3qi1"]
+children = [SubResource("BTPlayAnimation_veo1w"), SubResource("BTAction_veo1w"), SubResource("BTSelector_j3qi1")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_5a0v8")
+root_task = SubResource("BTSequence_j3qi1")

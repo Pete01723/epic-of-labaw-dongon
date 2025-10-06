@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="HealthPointComponent" load_steps=2 format=3 uid="uid://c6ft4wv1p53p5"]
+
+[ext_resource type="Script" uid="uid://n0aabivik6vo" path="res://Components/health_point_component.gd" id="1_ognml"]
+
+[resource]
+script = ExtResource("1_ognml")
+current_health_points = 10
+max_health_points = 10
+metadata/_custom_type_script = "uid://n0aabivik6vo"
